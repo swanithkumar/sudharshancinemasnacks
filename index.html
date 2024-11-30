@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudharshan</title>
+    <style>
+        /* General Reset and Body */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #E7F6F2; /* Light background */
+            color: #2C3333; /* Dark text */
+            margin: 0;
+            padding: 0;
+        }
+
+       /* Transparent Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the left */
+    width: 100%;
+    padding: 20px 40px; /* Added more padding for a balanced look */
+    background: transparent; /* Remove the background */
+    position: sticky;
+    top: 0;
+    z-index: 100; /* Keeps header on top if scrolled */
+}
+
+/* Logo */
+.header img {
+    height: 60px;
+    margin-right: 20px; /* More space between logo and title */
+}
+
+/* Heading Styling */
+.header h1 {
+    color: #395B64; /* Light text */
+    font-size: 2em; /* Slightly larger font size */
+    font-family: 'Merriweather', serif; /* Elegant serif font */
+    font-weight: 700; /* Bold for prominence */
+    margin-left: 0;
+    text-transform: uppercase; /* For a more refined, elegant look */
+}
+
+/* Carousel Margin Adjustment */
+.carousel {
+    margin-top: 50px; /* Increased space between carousel and heading */
+}
+
+/* Adding a nice font to body */
+body {
+    font-family: 'Lora', serif; /* Elegant serif font for body */
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+
+        /* Menu Grid */
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+        }
+
+        /* Menu Item */
+        .item {
+            background-color: #A5C9CA; /* Soft card background */
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 20px;
+        }
+
+        .item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .item img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background-color: #E7F6F2; /* Matches body */
+            border-bottom: 3px solid #2C3333;
+        }
+
+        .item h2 {
+            font-size: 1.5em;
+            margin: 10px 0;
+            color: #2C3333; /* Dark text */
+        }
+
+        .item p {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #395B64; /* Slightly darker accent */
+        }
+
+        /* Quantity Controls */
+        .quantity {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .quantity button {
+            background-color: #395B64;
+            color: #E7F6F2;
+            border: none;
+            padding: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .quantity button:hover {
+            background-color: #2C3333; /* Darker hover */
+        }
+
+        .quantity input {
+            width: 50px;
+            font-size: 1em;
+            text-align: center;
+            margin: 0 10px;
+            border: 1px solid #A5C9CA;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        /* Action Buttons */
+        .button {
+            background-color: #2C3333;
+            color: #E7F6F2;
+            border: none;
+            padding: 12px 30px;
+            text-align: center;
+            display: inline-block;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #395B64;
+        }
+        /* Ensure checkout-actions has proper styling */
+.checkout-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.checkout-actions button {
+    padding: 12px 30px;
+    background-color: #27AE60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.checkout-actions button:hover {
+    background-color: #219150;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+
+        /* Checkout Toggle Button */
+        .checkout-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #395B64;
+            color: #E7F6F2;
+            padding: 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5em;
+            font-weight: bold;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .checkout-toggle:hover {
+            background-color: #2C3333;
+            transform: scale(1.1);
+        }
+
+        /* Checkout Card */
+        .checkout-card {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #E7F6F2;
+            border-radius: 10px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 80%;
+            max-width: 900px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .checkout-card h2 {
+            margin-bottom: 20px;
+            color: #2C3333;
+        }
+
+        .checkout-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .checkout-card button#close-button {
+    padding: 15px 40px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.checkout-card button#close-button:hover {
+    background-color: darkred;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+        .checkout-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #A5C9CA;
+            border-radius: 10px;
+        }
+
+        .checkout-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+
+        .checkout-total {
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: right;
+            color: #2C3333;
+        }
+
+        .checkout-actions button {
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            color: #E7F6F2;
+        }
+
+        .checkout-actions .pay-button {
+            background-color: #395B64;
+        }
+
+        .checkout-actions .pay-button:hover {
+            background-color: #2C3333;
+        }
+
+        .checkout-actions .cancel-button {
+            background-color: #A5C9CA;
+        }
+
+        .checkout-actions .cancel-button:hover {
+            background-color: #395B64;
+        }
+
+        /* Notification Banner */
+        #notification-banner {
+            position: fixed;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #395B64;
+            color: #E7F6F2;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: top 0.5s ease;
+            z-index: 1000;
+            font-size: 1em;
+        }
+
+        /* Seat Number Field */
+        #seat-number-field {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #F8F9FA;
+            border: 1px solid #DDD;
+            border-radius: 8px;
+        }
+
+        #seat-number-field label {
+            font-size: 1.2em;
+            color: #333;
+            margin-right: 10px;
+        }
+
+        #seat-number {
+            width: 70%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #CCC;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        #seat-number:focus {
+            border-color: #27AE60;
+            box-shadow: 0 0 5px rgba(39, 174, 96, 0.5);
+        }
+
+        #payment-button:enabled {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Payment Card Styles */
+        .payment-card {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 80%;
+            max-width: 900px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .payment-card h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Payment Options */
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #F9F9F9;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .payment-option:hover {
+            background-color: #E0F7FA;
+        }
+
+        .payment-option input[type="radio"] {
+            display: none;
+        }
+
+        .payment-option input[type="radio"]:checked + label {
+            background-color: #B2EBF2;
+        }
+
+        .payment-option label {
+            font-size: 1.2em;
+            color: #333;
+            margin-right: 10px;
+            flex-grow: 1;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        /* Payment Details Section */
+        .payment-details {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        /* Payment Actions */
+        .payment-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .payment-actions button {
+            padding: 12px 30px;
+            background-color: #27AE60;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .payment-actions button:hover {
+            background-color: #219150;
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #F3F3F3;
+            border-radius: 50%;
+            border-top: 5px solid #3498DB;
+            animation: spin 1s linear infinite;
+        }
+         /* Seat Selection */
+         #seat-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+#seat-selection label {
+    font-size: 1.2em;
+    color: #333;
+}
+
+#seat-selection select,
+#seat-selection input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+    max-width: 400px;
+}
+
+#seat-selection select:focus,
+#seat-selection input:focus {
+    border-color: #3498DB;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+#seat-range-error {
+    color: red;
+    font-size: 0.9em;
+    display: none;
+    margin-top: 5px;
+}
+
+
+/* Receipt Card */
+.receipt-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to bottom right, #FFFFFF, #E0F7FA);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    width: 80%;
+    max-width: 600px;
+    z-index: 1000;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+    border: 2px solid #3498DB;
+}
+
+.receipt-card h2 {
+    margin-bottom: 20px;
+    color: #2C3E50;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #3498DB;
+}
+
+.receipt-details {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ECF0F1;
+    border-left: 8px solid #3498DB;
+    text-align: left;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.receipt-details p,
+.receipt-details ul li {
+    font-size: 1.2em;
+    color: #555;
+    margin: 5px 0;
+}
+
+.receipt-qrcode {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.receipt-card button {
+    padding: 15px 40px;
+    background-color: #27AE60;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.receipt-card button:hover {
+    background-color: #219150;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #seat-selection label {
+        font-size: 1.1em;
+    }
+
+    #seat-selection select,
+    #seat-selection input {
+        max-width: 350px;
+    }
+
+    .receipt-card {
+        padding: 30px;
+        max-width: 550px;
+    }
+
+    .receipt-card h2 {
+        font-size: 2.2em;
+    }
+
+    .receipt-details p,
+    .receipt-details ul li {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 768px) {
+    #seat-selection label {
+        font-size: 1em;
+    }
+
+    #seat-selection select,
+    #seat-selection input {
+        max-width: 300px;
+    }
+
+    .receipt-card {
+        padding: 20px;
+        max-width: 500px;
+    }
+
+    .receipt-card h2 {
+        font-size: 2em;
+    }
+
+    .receipt-details p,
+    .receipt-details ul li {
+        font-size: 1em;
+    }
+
+    .receipt-card button {
+        font-size: 1.1em;
+        padding: 12px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    #seat-selection {
+        gap: 8px;
+    }
+
+    #seat-selection label {
+        font-size: 1.1em;
+    }
+
+    #seat-selection select,
+    #seat-selection input {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    #seat-selection label {
+        font-size: 1em;
+    }
+
+    #seat-selection select,
+    #seat-selection input {
+        max-width: 250px;
+        font-size: 0.9em;
+    }
+}
+
+
+    .receipt-card {
+        padding: 15px;
+        width: 90%;
+    }
+
+    .receipt-card h2 {
+        font-size: 1.8em;
+    }
+
+    .receipt-details p,
+    .receipt-details ul li {
+        font-size: 0.9em;
+    }
+
+    .receipt-card button {
+        font-size: 1em;
+        padding: 10px 25px;
+    }
+
+
+
+    /* Carousel Container */
+    .carousel-container {
+        overflow: hidden;
+        position: relative;
+        width: 28%; /* Set to full width */
+        max-width: 800px; /* Maximum width for larger screens */
+        height: 600px; /* Initial height, can adjust as needed */
+        margin: auto; /* Center the carousel */
+    }
+
+    .carousel {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+    }
+
+    .carousel img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Ensure images fit within the container without distortion */
+        flex-shrink: 0;
+    }
+
+    .carousel-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        font-size: 24px;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .carousel-control-left {
+        left: 10px;
+    }
+
+    .carousel-control-right {
+        right: 10px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+        .carousel-container {
+            height: 350px; /* Adjust height for medium devices */
+        }
+    }
+
+    @media (max-width: 768px) {
+        .carousel-container {
+            height: 300px; /* Adjust height for smaller devices */
+        }
+
+        .carousel-control {
+            font-size: 20px; /* Smaller control buttons for smaller devices */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .carousel-container {
+            height: 250px; /* Adjust height for very small devices */
+        }
+
+        .carousel-control {
+            font-size: 18px; /* Smaller control buttons for very small devices */
+        }
+    }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .item {
+                width: 45%;
+            }
+
+            .checkout-card, .payment-card {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.2em;
+            }
+
+            .item {
+                width: 100%;
+            }
+
+            .checkout-card, .payment-card {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1em;
+            }
+
+            .item {
+                width: 100%;
+            }
+
+            .quantity input {
+                width: 40px;
+                font-size: 0.9em;
+            }
+
+            .button {
+                font-size: 0.9em;
+                padding: 10px 20px;
+            }
+
+            .checkout-toggle {
+                font-size: 1.2em;
+            }
+
+            .checkout-card, .payment-card {
+                width: 100%;
+            }
+
+            .checkout-actions button, .payment-actions button {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+        }
+</style>
+</head>
+<body>
+    <div class="header">
+        <img src="sudharshan.png" alt="Cinema Snacks Logo">
+        <h1>Sudharshan</h1>
+    </div>
+
+    <div class="carousel-container">
+        <div class="carousel" id="carousel">
+            <img src="14.jpg" alt="Upcoming Movie 1">
+            <img src="15.jpg" alt="Upcoming Movie 1">
+            <img src="12.jpg" alt="Upcoming Movie 2">
+        </div>
+    </div>
+
+    <div class="menu">
+        <div class="item">
+            <img src="pop.jpg" alt="Popcorn">
+            <h2>Popcorn</h2>
+            <p>₹200</p>
+            <div class="quantity">
+                <button onclick="changeQuantity('popcorn', -1)">-</button>
+                <input id="popcorn-quantity" type="number" value="0" readonly>
+                <button onclick="changeQuantity('popcorn', 1)">+</button>
+            </div>
+            <button class="button" onclick="addToCart('Popcorn', 200)">Add to Cart</button>
+        </div>
+        <div class="item">
+            <img src="coke.jpg" alt="Coke">
+            <h2>Coke</h2>
+            <p>₹100</p>
+            <div class="quantity">
+                <button onclick="changeQuantity('coke', -1)">-</button>
+                <input id="coke-quantity" type="number" value="0" readonly>
+                <button onclick="changeQuantity('coke', 1)">+</button>
+            </div>
+            <button class="button" onclick="addToCart('Coke', 100)">Add to Cart</button>
+        </div>
+        <div class="item">
+            <img src="chips.jpg" alt="Chips">
+            <h2>Chips</h2>
+            <p>₹50</p>
+            <div class="quantity">
+                <button onclick="changeQuantity('chips', -1)">-</button>
+                <input id="chips-quantity" type="number" value="0" readonly>
+                <button onclick="changeQuantity('chips', 1)">+</button>
+            </div>
+            <button class="button" onclick="addToCart('Chips', 50)">Add to Cart</button>
+        </div>
+        <div class="item">
+            <img src="sand.jpg" alt="Sandwich">
+            <h2>Sandwich</h2>
+            <p>₹70</p>
+            <div class="quantity">
+                <button onclick="changeQuantity('sandwich', -1)">-</button>
+                <input id="sandwich-quantity" type="number" value="0" readonly>
+                <button onclick="changeQuantity('sandwich', 1)">+</button>
+            </div>
+            <button class="button" onclick="addToCart('Sandwich', 70)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="checkout-toggle" onclick="toggleCheckout()">
+        <span id="cart-count">0</span> 🛒
+    </div>
+
+    <div id="checkout-card" class="checkout-card">
+        <h2>Your Cart</h2>
+        <div id="checkout-items" class="checkout-items"></div>
+        <div class="checkout-total">
+            Total: ₹<span id="cart-total">0</span>
+        </div>
+
+        <div id="seat-selection">
+            <label for="balcony-select">Select Balcony:</label>
+            <select id="balcony-select" onchange="updateRowOptions()">
+                <option value="">Select Balcony</option>
+                <option value="lower">Lower Balcony</option>
+                <option value="upper">Upper Balcony</option>
+            </select>
+
+            <label for="row-select">Select Row:</label>
+            <select id="row-select" disabled>
+                <option value="">Select Row</option>
+                <!-- Row options will be populated dynamically -->
+            </select>
+
+            <label for="seat-range">Enter Seat Range (e.g., 1-10):</label>
+            <input type="text" id="seat-range" placeholder="Enter seat range" disabled>
+            <div id="seat-range-error" style="color: red; display: none;">Invalid seat range. Please check the seat range and try again.</div>
+        </div>
+
+        <div class="checkout-actions">
+            <button onclick="toggleCheckout()">Close</button>
+            <button id="payment-button" onclick="validateSeatRange()">Make Payment</button>
+        </div>
+    </div>
+
+    <!-- Payment Options Card -->
+    <div id="payment-card" class="payment-card">
+        <h2>Payment Options</h2>
+        <div class="payment-options">
+            <div class="payment-option">
+                <input type="radio" id="payment-card" name="payment-method">
+                <label for="payment-card">Credit/Debit Card</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="payment-upi" name="payment-method">
+                <label for="payment-upi">UPI</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="payment-netbanking" name="payment-method">
+                <label for="payment-netbanking">Net Banking</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="payment-wallet" name="payment-method">
+                <label for="payment-wallet">Wallet</label>
+            </div>
+        </div>
+        <div class="payment-actions">
+            <button id="pay-now-button" onclick="processPayment()">PAY ₹<span id="total-amount">0</span></button>
+            <button onclick="togglePaymentCard()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Receipt Card -->
+    <div id="receipt-card" class="checkout-card">
+        <h2>Transaction Successful</h2>
+        <div id="receipt-details"></div>
+        <div id="receipt-qrcode"></div>
+        <button onclick="closeReceipt()">Close</button>
+    </div>
+
+    <div id="notification-banner"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.min.js"></script>
+    <script>
+        let cart = [];
+let totalAmount = 0;
+
+const seatMap = {
+    lowerBalcony: {
+        A: 44, B: 40, C: 39, D: 39, E: 39, F: 38, G: 38, H: 40
+    },
+    upperBalcony: {
+        Q: 19, P: 18, O: 32, N: 32, M: 32, L: 32, K: 32, J: 32, I: 32, H: 28, G: 28, F: 28, E: 32, D: 37, C: 37, B: 37, A: 37
+    }
+};
+
+function updateRowOptions() {
+    const balconySelect = document.getElementById('balcony-select').value;
+    const rowSelect = document.getElementById('row-select');
+    const seatRangeInput = document.getElementById('seat-range');
+    rowSelect.innerHTML = '<option value="">Select Row</option>';
+
+    if (balconySelect) {
+        const rows = seatMap[balconySelect + 'Balcony'];
+        for (let row in rows) {
+            rowSelect.innerHTML += `<option value="${row}">${row}</option>`;
+        }
+        rowSelect.disabled = false;
+        seatRangeInput.disabled = true;
+    } else {
+        rowSelect.disabled = true;
+        seatRangeInput.disabled = true;
+    }
+}
+
+document.getElementById('row-select').addEventListener('change', function() {
+    const seatRangeInput = document.getElementById('seat-range');
+    seatRangeInput.disabled = !this.value;
+});
+
+function changeQuantity(item, amount) {
+    const input = document.getElementById(`${item}-quantity`);
+    let value = parseInt(input.value) || 0;
+    value = Math.max(0, value + amount); // Prevent negative values
+    input.value = value;
+}
+
+function addToCart(item, price) {
+    const quantityInput = document.getElementById(`${item.toLowerCase()}-quantity`);
+    const quantity = parseInt(quantityInput.value);
+
+    if (quantity > 0) {
+        const cartItem = cart.find(cartItem => cartItem.item === item);
+        if (cartItem) {
+            cartItem.quantity += quantity;
+        } else {
+            cart.push({ item, price, quantity });
+        }
+        showNotification(`${item} added to cart!`);
+        updateCartButton();
+        resetQuantities();
+    } else {
+        alert('Please select a quantity before adding to the cart.');
+    }
+}
+
+function updateCartButton() {
+    const cartCount = cart.reduce((total, cartItem) => total + cartItem.quantity, 0);
+    document.getElementById('cart-count').innerText = cartCount;
+    updateCheckout(); // Ensure checkout updates here as well
+}
+
+function updateCheckout() {
+    const checkoutItemsContainer = document.getElementById('checkout-items');
+    const cartTotalElement = document.getElementById('cart-total');
+    const totalAmountElement = document.getElementById('total-amount');
+    const payNowButton = document.getElementById('pay-now-button');
+
+    if (checkoutItemsContainer && cartTotalElement && totalAmountElement && payNowButton) {
+        checkoutItemsContainer.innerHTML = '';
+        totalAmount = 0;
+
+        cart.forEach(cartItem => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'checkout-item';
+            itemDiv.innerHTML = `
+                <div>
+                    <p>${cartItem.item}</p>
+                    <p>₹${cartItem.price} x 
+                        <div class="quantity">
+                            <button class="quantity-button" onclick="updateItemQuantity('${cartItem.item}', ${cartItem.quantity} - 1)">-</button>
+                            <input type="number" min="0" value="${cartItem.quantity}" onchange="updateItemQuantity('${cartItem.item}', this.value)" class="quantity-input">
+                            <button class="quantity-button" onclick="updateItemQuantity('${cartItem.item}', ${cartItem.quantity} + 1)">+</button>
+                        </div>
+                    </p>
+                </div>
+            `;
+            checkoutItemsContainer.appendChild(itemDiv);
+            totalAmount += cartItem.price * cartItem.quantity;
+        });
+
+        cartTotalElement.innerText = totalAmount;
+        totalAmountElement.innerText = totalAmount;
+        payNowButton.innerHTML = `PAY ₹<span id="total-amount">${totalAmount}</span>`;
+    } else {
+        console.error('One or more elements not found.');
+    }
+}
+
+function updateItemQuantity(itemName, newQuantity) {
+    const cartItem = cart.find(cartItem => cartItem.item === itemName);
+    if (cartItem) {
+        cartItem.quantity = parseInt(newQuantity);
+        if (cartItem.quantity <= 0) {
+            cart = cart.filter(cartItem => cartItem.item !== itemName); // Remove item if quantity is 0 or less
+        }
+        updateCartButton(); // Update the cart button and total
+    }
+}
+
+function toggleCheckout() {
+    if (cart.length === 0) {
+        alert('Your cart is empty! Please add items before proceeding to checkout.');
+        return;
+    }
+
+    const checkoutCard = document.getElementById('checkout-card');
+    checkoutCard.style.display = checkoutCard.style.display === 'block' ? 'none' : 'block';
+}
+
+function resetQuantities() {
+    document.querySelectorAll('input[id$="-quantity"]').forEach(input => {
+        input.value = '0';
+    });
+}
+
+function getSeatRange(seatInput) {
+    const rowSelect = document.getElementById('row-select').value;
+    const singleSeatPattern = /^[0-9]+$/;
+    const rangeSeatPattern = /^([0-9]+)-([0-9]+)$/;
+    let capacity;
+
+    if (!rowSelect) return []; // No row selected
+
+    if (seatMap.lowerBalcony[rowSelect]) {
+        capacity = seatMap.lowerBalcony[rowSelect];
+    } else if (seatMap.upperBalcony[rowSelect]) {
+        capacity = seatMap.upperBalcony[rowSelect];
+    } else {
+        return []; // Invalid row, return empty array
+    }
+
+    if (singleSeatPattern.test(seatInput)) {
+        const seat = parseInt(seatInput);
+        if (seat < 1 || seat > capacity) {
+            return []; // Invalid seat number
+        }
+        return [`${rowSelect}-${seat}`];
+    } else if (rangeSeatPattern.test(seatInput)) {
+        const match = seatInput.match(rangeSeatPattern);
+        const startSeat = parseInt(match[1]);
+        const endSeat = parseInt(match[2]);
+
+        if (startSeat < 1 || endSeat > capacity || startSeat > endSeat) {
+            return []; // Invalid seat range
+        }
+
+        const range = [];
+        for (let i = startSeat; i <= endSeat; i++) {
+            range.push(`${rowSelect}-${i}`);
+        }
+        return range;
+    } else {
+        return []; // Invalid format
+    }
+}
+
+function validateSeatRange() {
+    const seatNumber = document.getElementById('seat-range').value.trim();
+    const seatRange = getSeatRange(seatNumber);
+    const errorElement = document.getElementById('seat-range-error');
+    const paymentButton = document.getElementById('payment-button');
+
+    if (seatRange.length === 0) {
+        errorElement.style.display = 'block';
+        paymentButton.disabled = true;
+    } else {
+        errorElement.style.display = 'none';
+        paymentButton.disabled = false;
+        togglePaymentCard();
+    }
+}
+
+document.getElementById('seat-range').addEventListener('input', () => {
+    const seatNumber = document.getElementById('seat-range').value.trim();
+    const paymentButton = document.getElementById('payment-button');
+    const seatRange = getSeatRange(seatNumber);
+    const errorElement = document.getElementById('seat-range-error');
+
+    if (seatRange.length === 0) {
+        errorElement.style.display = 'block';
+        paymentButton.disabled = true;
+    } else {
+        errorElement.style.display = 'none';
+        paymentButton.disabled = false;
+    }
+});
+
+function togglePaymentCard() {
+    const paymentCard = document.getElementById('payment-card');
+    paymentCard.style.display = paymentCard.style.display === 'block' ? 'none' : 'block';
+}
+
+function processPayment() {
+    showLoading();
+    setTimeout(() => {
+        displayReceipt();
+        triggerConfetti();  // Trigger confetti animation on payment success
+        togglePaymentCard();
+    }, 2000); // Simulate loading time
+}
+
+function triggerConfetti() {
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
+}
+
+function displayReceipt() {
+    hideLoading();
+    const receiptCard = document.getElementById('receipt-card');
+    const receiptDetails = document.getElementById('receipt-details');
+    const seatNumber = document.getElementById('seat-range').value.trim();
+    const seatNumbers = getSeatRange(seatNumber);
+    const orderId = Date.now(); // Simple unique order ID using timestamp
+
+    const receiptData = {
+        orderId: orderId,
+        items: cart.map(item => ({ name: item.item, quantity: item.quantity })),
+        seatNumbers: seatNumbers, // This array includes all selected seat numbers
+        totalAmount: totalAmount
+    };
+
+    receiptDetails.innerHTML = `
+        <p>Order ID: ${orderId}</p>
+    <p>Seat Numbers: ${seatNumbers.join(', ')}</p>
+    <p>Total Amount: ₹${totalAmount}</p>
+    <ul>
+        ${cart.map(item => `<li>${item.quantity} x ${item.item}</li>`).join('')}
+    </ul>
+    `;
+
+    const qrCodeElement = document.getElementById('receipt-qrcode');
+    qrCodeElement.innerHTML = "";
+    new QRCode(qrCodeElement, JSON.stringify(receiptData)); // QR code includes receiptData
+
+    receiptCard.style.display = 'block'; // Show receipt card
+}
+
+function showLoading() {
+    document.getElementById('loading-overlay').style.display = 'flex';
+}
+
+function hideLoading() {
+    document.getElementById('loading-overlay').style.display = 'none';
+}
+function closeReceipt() {
+            // Clear the cart
+            cart = [];
+            updateCartButton();
+
+            // Redirect to home page (simulated by reloading the current page)
+            window.location.href = window.location.pathname;
+        }
+
+
+function showNotification(message) {
+    const banner = document.getElementById('notification-banner');
+    banner.innerText = message;
+    banner.style.top = '10px';
+    setTimeout(() => {
+        banner.style.top = '-50px';
+    }, 2000);
+}
+
+let currentIndex = 0;
+const carousel = document.getElementById('carousel');
+const images = Array.from(carousel.querySelectorAll('img'));
+const totalImages = images.length;
+
+// Clone the first and last image for seamless transition
+const cloneFirst = images[0].cloneNode(true);
+const cloneLast = images[totalImages - 1].cloneNode(true);
+carousel.appendChild(cloneFirst);
+carousel.insertBefore(cloneLast, images[0]);
+
+// Adjust the carousel's initial position
+carousel.style.transform = `translateX(-${100}%)`;
+
+function moveCarousel() {
+    currentIndex++;
+    carousel.style.transition = 'transform 0.5s ease-in-out';
+    carousel.style.transform = `translateX(-${(currentIndex + 1) * 100}%)`;
+
+    if (currentIndex === totalImages) {
+        setTimeout(() => {
+            carousel.style.transition = 'none';
+            currentIndex = 0;
+            carousel.style.transform = `translateX(-${100}%)`;
+        }, 500);  // Give time for the transition to finish
+    }
+}
+
+// Set automatic transition every 3 seconds
+setInterval(moveCarousel, 3000);
+
+// Manual control for carousel navigation using buttons
+document.querySelector('.carousel-control-left').addEventListener('click', function() {
+    if (currentIndex > 0) {
+        currentIndex--;
+        carousel.style.transition = 'transform 0.5s ease-in-out';
+        carousel.style.transform = `translateX(-${(currentIndex + 1) * 100}%)`;
+    } else {
+        carousel.style.transition = 'none';
+        currentIndex = totalImages - 1;
+        carousel.style.transform = `translateX(-${(currentIndex + 1) * 100}%)`;
+        setTimeout(() => {
+            carousel.style.transition = 'transform 0.5s ease-in-out';
+        }, 20);
+    }
+});
+
+document.querySelector('.carousel-control-right').addEventListener('click', moveCarousel);
+
+</script>
+</body>
+</html>
